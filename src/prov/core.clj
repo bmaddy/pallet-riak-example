@@ -13,15 +13,10 @@
 (def service
   (compute/service :aws))
 
-;(def riak-node
-;  (pallet.core/node-spec
-;    :image {:os-family :ubuntu :os-version-matches "10.10"}
-;    ; Amazon Linux AMI
-;    ;:image {:image-id "us-east-1/ami-31814f58"}
-;    :network {:inbound-ports [22]}
-;    :qos {:enable-monitoring true}))
 (def riak-node
   (pallet.core/node-spec
+    ; Amazon Linux AMI
+    ;:image {:image-id "us-east-1/ami-31814f58"}))
     :image {:os-family :ubuntu
             :os-version-matches "10.10"
             :os-64-bit true}))
@@ -29,22 +24,8 @@
 (def base-server
   (pallet.core/server-spec
     :phases {:bootstrap (phase/phase-fn (automated-admin-user/automated-admin-user))
-             :configure (phase/phase-fn (riak/riak))
-             ;             (ssh/openssh)
-             ;             (exec-script/exec-script
-             ;               (ls "'/tmp'"))
-             ;             (exec-script/exec-script
-             ;               (println "'downloading riak'")
-             ;               (mkdir "'/tmp/riak-package'")
-             ;               (cd "'/tmp/riak-package'")
-             ;               (wget "'http://downloads.basho.com/riak/riak-1.0.2/riak_1.0.2-1_amd64.deb'")
-             ;               (println "'...done'")
-             ;               (println "'installing riak'")
-             ;               (yum install dpkg)
-             ;               (dpkg "-i" "riak_1.0.2-1_amd64.deb"))
-             ;               ;(println "'...done'")
-             ;             (ssh/iptables-accept)
-             ;             (package/package "htop")
+             :configure (phase/phase-fn (riak/riak)
+                                        (package/package "htop"))
                           }))
 
 (def riak
