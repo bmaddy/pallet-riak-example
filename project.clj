@@ -1,6 +1,9 @@
 (defproject prov "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
-  :dependencies [[org.cloudhoist/pallet "0.6.7"]
+  :dependencies [
+                 ;[org.clojure/clojure "1.2.0"]
+                 ;[org.clojure/clojure-contrib "1.2.0"]
+                 [org.cloudhoist/pallet "0.6.7"]
                  [org.cloudhoist/pallet-crates-all "0.5.0"]
                  [org.jclouds/jclouds-all "1.0.0"]
                  [org.cloudhoist/automated-admin-user "0.5.0"]

@@ -1,5 +1,5 @@
-(ns prov.test.core
-  (:use [prov.core])
+(ns pallet-riak-example.test.core
+  (:use [pallet-riak-example.core])
   (:use [clojure.test]))
 
 (deftest replace-me ;; FIXME: write
